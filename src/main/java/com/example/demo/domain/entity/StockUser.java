@@ -1,10 +1,14 @@
 package com.example.demo.domain.entity;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
 @Table(name="stock_user", catalog = "test")
+@ApiModel(description = "Stock user detail ")
 public class StockUser {
 
     public StockUser() {
@@ -13,16 +17,20 @@ public class StockUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @ApiModelProperty(notes = "The database generated stock user ID")
     private Integer id;
 
     @Column(name = "user_id")
+    @ApiModelProperty(notes = "Stock User ID (Unique value)")
     private String userId;
 
     @Column(name = "stock")
+    @ApiModelProperty(notes = "Stock Quantity per user")
     private Integer stock;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
+    @ApiModelProperty(notes = "database row created date")
     private Date createdAt;
 
 
