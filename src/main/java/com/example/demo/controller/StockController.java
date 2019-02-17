@@ -4,6 +4,7 @@ import com.example.demo.domain.entity.StockUser;
 import com.example.demo.framework.exception.ResourceNotFoundException;
 import com.example.demo.service.StockService;
 import io.swagger.annotations.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/v1")
 @Api(value="스톡옵션 관리 시스템", description="각 사용자들에게 부여된 스톡옵션을 관리한다.")
@@ -39,6 +41,8 @@ public class StockController {
     @ApiOperation(value = "Add Stock User")
     @PostMapping("/user")
     public StockUser addStockUser(@ApiParam(value = "Stock User store in database table", required = true) @Valid @RequestBody StockUser stockUser) {
+        log.info("# Stock user : {}", stockUser);
+
         stockUser.setCreatedAt(new Date());
         StockUser stockUserEntity = stockService.save(stockUser);
 
