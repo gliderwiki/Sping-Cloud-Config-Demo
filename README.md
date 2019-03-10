@@ -1,2 +1,2 @@
-# swagger-demo
-Spring Boot DEMO with swagger 
+# Spring Cloud Config Demo
+Spring Boot DEMO with Spring Cloud Config  
