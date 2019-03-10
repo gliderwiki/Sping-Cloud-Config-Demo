@@ -16,7 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class JasyptTest {
 
-    private final String PASSWORD = "pass";
+    private final String DB_PASSWORD = "pass";
 
     @Test
     public void 암호화_복호화_테스트() {
@@ -26,14 +26,14 @@ public class JasyptTest {
         encryptor.setAlgorithm("PBEWithMD5AndDES");
         encryptor.setStringOutputType("base64");
 
-        String encrypted = encryptor.encrypt(PASSWORD);
+        String encrypted = encryptor.encrypt(DB_PASSWORD);
         String decrypted = encryptor.decrypt(encrypted);
 
 
         log.info("# encrypted = {}", encrypted);
         log.info("# decrypted = {}", decrypted);
 
-        Assert.assertEquals(decrypted, PASSWORD);
+        Assert.assertEquals(decrypted, DB_PASSWORD);
 
     }
 }
